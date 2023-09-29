@@ -1,8 +1,9 @@
 # 주식 매매 프로그램
 
-### 기술스택
 
-Framework : Spring Boot, Spring Data, Spring Kafka
+### 기술 스택
+
+Framework : Spring Boot, Spring Webflux, Spring Data, Spring Kafka
 
 DB : MySQL
 
