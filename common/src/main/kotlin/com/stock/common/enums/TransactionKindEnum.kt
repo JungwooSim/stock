@@ -1,4 +1,4 @@
-package com.stock.infrastructure.db
+package com.stock.common.enums
 
 enum class TransactionKindEnum {
   BUY, SELL

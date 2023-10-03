@@ -1,8 +1,8 @@
 package com.stock.infrastructure.db.fixture
 
 import com.stock.infrastructure.db.TransactionEntity
-import com.stock.infrastructure.db.TransactionKindEnum
-import com.stock.infrastructure.db.TransactionStateEnum
+import com.stock.common.enums.TransactionKindEnum
+import com.stock.common.enums.TransactionStateEnum
 import io.github.serpro69.kfaker.Faker
 import java.math.BigDecimal
 import java.time.LocalDateTime

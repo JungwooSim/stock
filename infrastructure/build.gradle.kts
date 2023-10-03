@@ -38,6 +38,7 @@ dependencies {
   testImplementation("org.testcontainers:mysql:1.19.0")
   testImplementation("org.testcontainers:junit-jupiter:1.19.0")
 
+  implementation(project(":common"))
 }
 
 tasks.withType<KotlinCompile> {

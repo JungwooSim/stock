@@ -1,5 +1,7 @@
 package com.stock.infrastructure.db
 
+import com.stock.common.enums.TransactionKindEnum
+import com.stock.common.enums.TransactionStateEnum
 import org.springframework.data.relational.core.mapping.Table
 import java.math.BigDecimal
 import java.time.LocalDateTime

@@ -4,7 +4,7 @@ import com.stock.domain.order.Order
 
 interface OrderPort {
 
-  fun saveDb(): Order
+  suspend fun saveDb(order: Order): Order
 
   fun saveMessage()
 }
