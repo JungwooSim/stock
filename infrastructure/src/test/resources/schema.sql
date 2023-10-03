@@ -1,0 +1,18 @@
+/**
+CREATE TABLE `transaction` (
+    `id` INT(11) UNSIGNED NOT NULL,
+    `kind` CHAR(10) NOT NULL COMMENT 'BUY, SELL',
+    `state` CHAR(10) NOT NULL COMMENT 'WAITING(대기중), COMPLETE(완료), CANCEL(취소)',
+    `quantity` INT(11) UNSIGNED NOT NULL COMMENT '주문 수량',
+    `price` DECIMAL(12,4) NOT NULL,
+    `user_id` INT(11) NOT NULL,
+    `stock_id` VARCHAR(45) NOT NULL COMMENT '주식 id',
+    `order_no` VARCHAR(100) NOT NULL COMMENT '주문번호(증권사 발급)',
+    `modified_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COMMENT = '거래내역';
+*/
