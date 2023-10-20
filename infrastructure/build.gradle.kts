@@ -26,8 +26,6 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
   implementation("org.springframework.kafka:spring-kafka")
-  runtimeOnly("com.h2database:h2")
-  runtimeOnly("io.r2dbc:r2dbc-h2")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("io.projectreactor:reactor-test")
   testImplementation("org.springframework.kafka:spring-kafka-test")
