@@ -1,13 +1,16 @@
 package com.stock.infrastructure
 
+import com.stock.common.enums.TopicEnum
 import com.stock.domain.order.Order
 import com.stock.infrastructure.db.TransactionEntity
 import com.stock.infrastructure.db.TransactionRepository
+import com.stock.infrastructure.kafka.KafkaPublisher
 import org.springframework.stereotype.Component
 
 @Component
 class OrderAdapter(
   private val transactionRepository: TransactionRepository,
+  private val kafkaPublisher: KafkaPublisher,
 ) : OrderPort {
   override suspend fun saveDb(order: Order): Order {
     val savedOrder = transactionRepository.save(
@@ -38,7 +41,10 @@ class OrderAdapter(
     )
   }
 
-  override fun saveMessage() {
-    TODO("Not yet implemented")
+  override fun saveMessage(topicEnum: TopicEnum, payload: String) {
+    kafkaPublisher.sendMessage(
+      topicName = topicEnum,
+      payLoad = payload
+    )
   }
 }
