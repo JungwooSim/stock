@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  kafka:
+  stock-kafka:
     container_name: stock-kafka
     image: docker.io/bitnami/kafka:3.6
     ports:
@@ -12,13 +12,24 @@ services:
       # KRaft settings
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@stock-kafka:9093
       # Listeners
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-volumes:
-  kafka_data:
-    driver: local
+
+  kafka-ui-stock:
+    container_name: stock-kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8903:8080
+    depends_on:
+      - stock-kafka
+    environment:
+      KAFKA_CLUSTERS_0_NAME: stock-kafka
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: stock-kafka:9092
+    #      DYNAMIC_CONFIG_ENABLED: 'true'
+    #    volumes:
+    #      - ~/docker-file-share/kafka-ui:/etc/kafkaui/dynamic_config.yaml
