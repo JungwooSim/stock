@@ -4,6 +4,8 @@ import com.stock.application.OrderService
 import com.stock.common.enums.TopicEnum
 import com.stock.domain.order.Order
 import com.stock.infrastructure.OrderPort
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -16,7 +18,7 @@ class OrderServiceImpl(
   override suspend fun order(order: Order): Order {
     orderPort.saveMessage(
       topicEnum = TopicEnum.ORDER,
-      payload = order.toString()
+      payload = Json.encodeToString(order)
     )
 
     return orderPort.saveDb(order = order)
