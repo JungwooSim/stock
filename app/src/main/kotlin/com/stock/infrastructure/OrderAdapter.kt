@@ -42,6 +42,7 @@ class OrderAdapter(
   }
 
   override fun saveMessage(topicEnum: TopicEnum, payload: String) {
+
     kafkaPublisher.sendMessage(
       topicName = topicEnum,
       payLoad = payload

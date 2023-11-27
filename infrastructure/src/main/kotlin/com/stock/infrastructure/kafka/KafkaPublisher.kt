@@ -10,6 +10,7 @@ class KafkaPublisher(
 ) {
 
   fun sendMessage(topicName: TopicEnum, payLoad: String) {
+    println("topicEnum : ${topicName.topicName}, payload : ${payLoad}")
     kafkaTemplate.send(topicName.topicName, payLoad)
   }
 }

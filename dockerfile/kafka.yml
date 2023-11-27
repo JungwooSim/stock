@@ -33,3 +33,7 @@ services:
     #      DYNAMIC_CONFIG_ENABLED: 'true'
     #    volumes:
     #      - ~/docker-file-share/kafka-ui:/etc/kafkaui/dynamic_config.yaml
+
+networks:
+  example-net:
+    external: true
