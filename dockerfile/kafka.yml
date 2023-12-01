@@ -1,25 +1,28 @@
-version: "2"
+version: "3"
 
 services:
   stock-kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    hostname: stock-kafka
     container_name: stock-kafka
-    image: docker.io/bitnami/kafka:3.6
     ports:
-      - "9092:9092"
       - "9094:9094"
-    volumes:
-      - "~/docker-file-share/stock-kafka:/bitnami"
     environment:
-      # KRaft settings
-      - KAFKA_CFG_NODE_ID=0
-      - KAFKA_CFG_PROCESS_ROLES=controller,broker
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@stock-kafka:9093
-      # Listeners
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://localhost:9094
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://stock-kafka:29092,EXTERNAL://localhost:9094
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@stock-kafka:29093'
+      KAFKA_LISTENERS: PLAINTEXT://stock-kafka:29092,CONTROLLER://stock-kafka:29093,EXTERNAL://:9094
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
+#      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka1:9093,2@kafka2:9093,3@kafka3:9093'
+#      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+#    volumes:
+#      - ./scripts/update_run.sh:/tmp/update_run.sh
+#      - ./clusterID:/tmp/clusterID
+#    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
 
   kafka-ui-stock:
     container_name: stock-kafka-ui
@@ -30,7 +33,7 @@ services:
       - stock-kafka
     environment:
       KAFKA_CLUSTERS_0_NAME: stock-kafka
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: stock-kafka:9092
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: stock-kafka:29092
     #      DYNAMIC_CONFIG_ENABLED: 'true'
     #    volumes:
     #      - ~/docker-file-share/kafka-ui:/etc/kafkaui/dynamic_config.yaml
