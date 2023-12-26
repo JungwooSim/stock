@@ -6,10 +6,15 @@ import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 import java.math.BigDecimal
 import java.time.LocalDateTime
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.LastModifiedDate
 
 // TODO : 환경별 DB 설정 파일 추가하기
-@Table("transaction")
+@Table(name = "transaction")
 class TransactionEntity constructor(
+
+  @Id
   val id: Long? = null,
   val kind: TransactionKindEnum,
   val state: TransactionStateEnum,
@@ -20,8 +25,10 @@ class TransactionEntity constructor(
   val orderNo: Long,
 
   @Column("modified_at")
+  @LastModifiedDate
   val modifiedAt: LocalDateTime,
 
   @Column("created_at")
-  val createdAt: LocalDateTime
+  @CreatedDate
+  val createdAt: LocalDateTime,
 )

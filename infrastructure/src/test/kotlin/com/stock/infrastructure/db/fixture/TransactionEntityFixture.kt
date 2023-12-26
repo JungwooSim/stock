@@ -15,11 +15,11 @@ class TransactionEntityFixture {
     fun create(
       kind: TransactionKindEnum = faker.random.nextEnum<TransactionKindEnum>(),
       state: TransactionStateEnum = faker.random.nextEnum<TransactionStateEnum>(),
-      quantity: Long = faker.random.nextLong(),
+      quantity: Long = faker.random.nextLong(100000),
       price: BigDecimal = BigDecimal(faker.random.nextDouble()),
-      userId: Long = faker.random.nextLong(),
-      stockId: Long = faker.random.nextLong(),
-      orderNo: Long = faker.random.nextLong(),
+      userId: Long = faker.random.nextLong(100000),
+      stockId: Long = faker.random.nextLong(100000),
+      orderNo: Long = faker.random.nextLong(100000),
       modifiedAt: LocalDateTime = LocalDateTime.now(),
       createdAt: LocalDateTime = LocalDateTime.now(),
     ): TransactionEntity {

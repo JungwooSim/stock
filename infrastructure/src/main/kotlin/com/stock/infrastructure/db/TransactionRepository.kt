@@ -1,5 +1,5 @@
 package com.stock.infrastructure.db
 
-import org.springframework.data.repository.kotlin.CoroutineCrudRepository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-interface TransactionRepository : CoroutineCrudRepository<TransactionEntity, Long>
+interface TransactionRepository : ReactiveCrudRepository<TransactionEntity, Long>
