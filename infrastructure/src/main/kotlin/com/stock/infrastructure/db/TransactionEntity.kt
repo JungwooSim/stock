@@ -16,12 +16,19 @@ class TransactionEntity constructor(
 
   @Id
   val id: Long? = null,
+
   val kind: TransactionKindEnum,
+
   val state: TransactionStateEnum,
+
   val quantity: Long,
+
   val price: BigDecimal,
+
   val userId: Long,
+
   val stockId: Long,
+
   val orderNo: Long,
 
   @Column("modified_at")

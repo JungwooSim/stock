@@ -16,12 +16,13 @@ class OrderServiceImpl(
 
   @Transactional
   override suspend fun order(order: Order): Order {
+    orderPort.saveDb(order = order)
+
     orderPort.saveMessage(
       topicEnum = TopicEnum.ORDER,
       payload = Json.encodeToString(order)
     )
 
-//    orderPort.saveDb(order = order)
     return order
   }
 }

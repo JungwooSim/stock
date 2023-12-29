@@ -18,3 +18,10 @@
 #spring:
 #  r2dbc:
 #    url:
+
+
+#kafka:
+#  bootstrap:
+#    addresses: ${spring.embedded.kafka.brokers:localhost:9092}
+
+kafka-dead-letter: stock-dead-letter

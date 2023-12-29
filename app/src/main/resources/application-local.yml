@@ -3,3 +3,9 @@ spring:
     url: r2dbc:mysql://localhost:3306/stock?serverZone=Asia/Seoul
     username: root
     password: root
+  kafka:
+    bootstrap-servers: localhost:9094
+    security:
+      protocol:
+
+kafka-dead-letter: stock-dead-letter

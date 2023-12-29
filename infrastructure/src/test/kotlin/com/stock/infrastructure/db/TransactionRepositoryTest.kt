@@ -19,9 +19,9 @@ class TransactionRepositoryTest(
     val transactionEntity = TransactionEntityFixture.create()
 
     // when
-    val actual = runBlocking { transactionRepository.save(transactionEntity).block() }
+    val actual = runBlocking { transactionRepository.save(transactionEntity) }
 
     // then
-    assertThat(actual?.id).isNotNull()
+    assertThat(actual.id).isNotNull()
   }
 }
