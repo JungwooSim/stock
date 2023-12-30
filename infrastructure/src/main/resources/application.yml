@@ -1,1 +1,15 @@
-
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 80
+#        failureRateThreshold: 50 # 실패율, 지정한 임계값 이상이면 서킷 OPEN
+#        slowCallRateThreshold: 50 # slow call 비율, 지정한 임계값 이상이면 서킷 OPEN
+#        slowCallDurationThreshold: 2000 # slow call 시간
+#        permittedNumberOfCallsInHalfOpenState: 4 # half open 일 경우 받을 수 있는 요청 개수
+#        maxWaitDurationInHalfOpenState: 1000 # half open 일 때, 열림상태가 되기까지 대기 시간
+#        slidingWindowType: COUNT_BASED # 서킷을 닫음처리할때 방식
+#        slidingWindowSize: 10 # x 번 성공하면 닫음 처리
+#        minimumNumberOfCalls: 20 #서킷 상태 변경을 측정하기 위한 최소 호출 수 (해당값 기준으로 백분율 계산함)
+#        waitDurationInOpenState: 2000 #ms, 서킷이 열림에서 반열림으로 전환하기전 대기 시간

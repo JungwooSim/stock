@@ -32,6 +32,7 @@ subprojects {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
   }
 
   dependencyManagement {
