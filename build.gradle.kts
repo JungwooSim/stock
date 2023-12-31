@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
   id("org.springframework.boot") version "3.2.0" apply false
   id("io.spring.dependency-management") version "1.1.4"
-  kotlin("kapt") version "1.8.22"
+  id("com.google.devtools.ksp") version "1.8.10-1.0.9"
   kotlin("jvm") version "1.8.22"
   kotlin("plugin.spring") version "1.8.22"
   kotlin("plugin.jpa") version "1.8.22"
@@ -23,16 +23,16 @@ allprojects {
 
 subprojects {
   apply(plugin = "kotlin")
-  apply(plugin = "kotlin-kapt")
   apply(plugin = "kotlin-spring")
   apply(plugin = "io.spring.dependency-management")
 
   dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   }
 
   dependencyManagement {
