@@ -1,24 +1,13 @@
-#spring:
-#  datasource:
-#    url: jdbc:h2:mem:test
-#    username: sa
-#    password:
-#    driver-class-name: org.h2.Driver
-#  h2:
-#    console:
-#      enabled: true
-#  jpa:
-#    show-sql: true
-#    properties:
-#      hibernate.format_sql: true
-#    hibernate:
-#      ddl-auto: create-drop
-
-
-#spring:
-#  r2dbc:
-#    url:
-
+spring:
+  kafka:
+    bootstrap-servers:
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
 
 kafka-dead-letter: stock-dead-letter
 
@@ -37,6 +26,4 @@ resilience4j:
 #        slidingWindowSize: 10 # x 번 성공하면 닫음 처리
 #        minimumNumberOfCalls: 20 #서킷 상태 변경을 측정하기 위한 최소 호출 수 (해당값 기준으로 백분율 계산함)
 #        waitDurationInOpenState: 2000 #ms, 서킷이 열림에서 반열림으로 전환하기전 대기 시간
-spring:
-  kafka:
-    bootstrap-servers:
+

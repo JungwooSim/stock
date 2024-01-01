@@ -1,5 +1,6 @@
 package com.stock.infrastructure.api.ebest
 
+import com.stock.infrastructure.InfrastructureApplicationTest
 import com.stock.infrastructure.api.ebest.dto.EbestOrderRequest
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry
 import java.nio.charset.StandardCharsets
@@ -13,15 +14,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.util.ResourceUtils
 import org.springframework.web.reactive.function.client.WebClient
 
-@SpringBootTest
 class OrderApiTest @Autowired constructor(
   private val circuitBreakerRegistry: CircuitBreakerRegistry,
-) {
+) : InfrastructureApplicationTest() {
 
   private lateinit var mockWebServer: MockWebServer
   private lateinit var orderApi: OrderApi
