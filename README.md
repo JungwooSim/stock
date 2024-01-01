@@ -1,7 +1,7 @@
 # 주식 매매 프로그램
 
 
-### 기술 스택
+### 기술 스택 & rule
 
 Framework : Spring Boot, Spring Webflux, Spring Data, Spring Kafka
 
