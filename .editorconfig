@@ -1,0 +1,14 @@
+root = true
+
+[*]
+indent_size = 2
+indent_style = space
+
+tab_width = 2
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.{kt, kts}]
+kotlin_code = ktlint_offical
+ij_kotlin_packages_to_use_import_on_demand = unset
+ktlint_args = --disabled_rules=value_parameter_list

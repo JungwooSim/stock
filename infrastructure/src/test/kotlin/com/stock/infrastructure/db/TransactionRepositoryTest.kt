@@ -12,7 +12,6 @@ class TransactionRepositoryTest(
   @Autowired
   private val transactionRepository: TransactionRepository,
 ) {
-
   @Test
   fun save() {
     // given

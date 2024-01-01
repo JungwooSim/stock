@@ -1,14 +1,13 @@
 package com.stock.infrastructure.db.fixture
 
-import com.stock.infrastructure.db.TransactionEntity
 import com.stock.common.enums.TransactionKindEnum
 import com.stock.common.enums.TransactionStateEnum
+import com.stock.infrastructure.db.TransactionEntity
 import io.github.serpro69.kfaker.Faker
 import java.math.BigDecimal
 import java.time.LocalDateTime
 
 class TransactionEntityFixture {
-
   companion object {
     private val faker = Faker()
 

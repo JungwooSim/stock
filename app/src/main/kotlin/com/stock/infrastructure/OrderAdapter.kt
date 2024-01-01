@@ -13,19 +13,20 @@ class OrderAdapter(
   private val kafkaPublisher: KafkaPublisher,
 ) : OrderPort {
   override suspend fun saveDb(order: Order): Order {
-    val savedOrder = transactionRepository.save(
-      TransactionEntity(
-        kind = order.kind,
-        state = order.state,
-        quantity = order.quantity,
-        price = order.price,
-        userId = order.userId,
-        stockId = order.stockId,
-        orderNo = order.orderNo,
-        modifiedAt = order.modifiedAt,
-        createdAt = order.createdAt,
+    val savedOrder =
+      transactionRepository.save(
+        TransactionEntity(
+          kind = order.kind,
+          state = order.state,
+          quantity = order.quantity,
+          price = order.price,
+          userId = order.userId,
+          stockId = order.stockId,
+          orderNo = order.orderNo,
+          modifiedAt = order.modifiedAt,
+          createdAt = order.createdAt,
+        ),
       )
-    )
 
     return Order(
       id = savedOrder.id,
@@ -41,11 +42,13 @@ class OrderAdapter(
     )
   }
 
-  override fun saveMessage(topicEnum: TopicEnum, payload: String) {
-
+  override fun saveMessage(
+    topicEnum: TopicEnum,
+    payload: String,
+  ) {
     kafkaPublisher.sendMessage(
       topicName = topicEnum,
-      payLoad = payload
+      payLoad = payload,
     )
   }
 }

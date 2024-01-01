@@ -1,6 +1,5 @@
 package com.stock.worker.global.config
 
-import java.time.LocalDateTime
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.TopicPartition
@@ -22,6 +21,7 @@ import org.springframework.kafka.listener.DeadLetterPublishingRecoverer
 import org.springframework.kafka.listener.DefaultErrorHandler
 import org.springframework.kafka.support.KafkaUtils
 import org.springframework.util.backoff.FixedBackOff
+import java.time.LocalDateTime
 
 @EnableKafka
 @Configuration
@@ -33,23 +33,23 @@ class KafkaConfig(
   @Value("\${kafka-dead-letter}")
   private val deadLetterTopic: String,
 ) {
-
   @Bean
   @DependsOn("kafkaTemplate", "consumerFactory")
   fun kafkaListenerContainerFactory(kafkaTemplate: KafkaTemplate<String, String>): ConcurrentKafkaListenerContainerFactory<String, String> {
     val factory = ConcurrentKafkaListenerContainerFactory<String, String>()
 
-    val recoverer = DeadLetterPublishingRecoverer(kafkaTemplate) { record, exception ->
-      record.headers()
-        .add("originTopic", record.topic().toByteArray())
-        .add("originPartition", record.partition().toString().toByteArray())
-        .add("originOffset", record.offset().toString().toByteArray())
-        .add("consumerGroupId", KafkaUtils.getConsumerGroupId().toByteArray())
-        .add("deadLetterAt", LocalDateTime.now().toString().toByteArray())
-        .add("errorMessage", exception.stackTraceToString().toByteArray())
+    val recoverer =
+      DeadLetterPublishingRecoverer(kafkaTemplate) { record, exception ->
+        record.headers()
+          .add("originTopic", record.topic().toByteArray())
+          .add("originPartition", record.partition().toString().toByteArray())
+          .add("originOffset", record.offset().toString().toByteArray())
+          .add("consumerGroupId", KafkaUtils.getConsumerGroupId().toByteArray())
+          .add("deadLetterAt", LocalDateTime.now().toString().toByteArray())
+          .add("errorMessage", exception.stackTraceToString().toByteArray())
 
-      TopicPartition(deadLetterTopic, -1)
-    }
+        TopicPartition(deadLetterTopic, -1)
+      }
 
     return factory.also {
       it.consumerFactory = consumerFactory()
@@ -66,8 +66,8 @@ class KafkaConfig(
 //        CommonClientConfigs.SECURITY_PROTOCOL_CONFIG to securityProtocol,
         ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
         ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
-        ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "earliest"
-      )
+        ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "earliest",
+      ),
     )
   }
 
@@ -80,7 +80,7 @@ class KafkaConfig(
         ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
         ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
         ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG to true,
-      )
+      ),
     )
   }
 

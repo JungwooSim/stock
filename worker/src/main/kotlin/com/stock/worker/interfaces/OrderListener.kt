@@ -5,10 +5,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class OrderListener {
-
   @KafkaListener(
     topics = ["order"],
-    groupId = "Stock-worker"
+    groupId = "Stock-worker",
   )
   fun orderListener(message: String) {
     println(message)

@@ -3,8 +3,6 @@ package com.stock.domain.order
 import com.stock.common.enums.TransactionKindEnum
 import com.stock.common.enums.TransactionStateEnum
 import com.stock.interfaces.order.OrderResponse
-import java.math.BigDecimal
-import java.time.LocalDateTime
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -12,6 +10,8 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import java.math.BigDecimal
+import java.time.LocalDateTime
 
 @Serializable
 data class Order(
@@ -22,13 +22,15 @@ data class Order(
   @Serializable(with = BigDecimalSerializer::class) val price: BigDecimal,
   val stockId: Long,
   val userId: Long,
-  val orderNo: Long = 0, // 최초에는 0, 연동사를 통해 갱신
+  // 최초에는 0, 연동사를 통해 갱신
+  val orderNo: Long = 0,
+  // TODO : Spring Data 에서 auditing 적용하기
   @Serializable(with = LocalDateTimeSerializer::class)
-  val modifiedAt: LocalDateTime = LocalDateTime.now(), // TODO : Spring Data 에서 auditing 적용하기
+  val modifiedAt: LocalDateTime = LocalDateTime.now(),
+  // TODO : Spring Data 에서 auditing 적용하기
   @Serializable(with = LocalDateTimeSerializer::class)
-  val createdAt: LocalDateTime = LocalDateTime.now(), // TODO : Spring Data 에서 auditing 적용하기
+  val createdAt: LocalDateTime = LocalDateTime.now(),
 ) {
-
   fun toOrderResponse(): OrderResponse {
     return OrderResponse(
       id = this.id,
@@ -43,12 +45,15 @@ data class Order(
   }
 }
 
-object BigDecimalSerializer: KSerializer<BigDecimal> {
+object BigDecimalSerializer : KSerializer<BigDecimal> {
   override fun deserialize(decoder: Decoder): BigDecimal {
     return decoder.decodeString().toBigDecimal()
   }
 
-  override fun serialize(encoder: Encoder, value: BigDecimal) {
+  override fun serialize(
+    encoder: Encoder,
+    value: BigDecimal,
+  ) {
     encoder.encodeString(value.toPlainString())
   }
 
@@ -57,7 +62,10 @@ object BigDecimalSerializer: KSerializer<BigDecimal> {
 }
 
 object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
-  override fun serialize(encoder: Encoder, value: LocalDateTime) {
+  override fun serialize(
+    encoder: Encoder,
+    value: LocalDateTime,
+  ) {
     encoder.encodeString(value.toString())
   }
 

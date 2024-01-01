@@ -4,6 +4,7 @@ plugins {
   id("org.springframework.boot") version "3.2.0" apply false
   id("io.spring.dependency-management") version "1.1.4"
   id("com.google.devtools.ksp") version "1.8.10-1.0.9"
+  id("org.jlleitschuh.gradle.ktlint") version "12.0.3"
   kotlin("jvm") version "1.8.22"
   kotlin("plugin.spring") version "1.8.22"
   kotlin("plugin.jpa") version "1.8.22"
@@ -25,6 +26,7 @@ subprojects {
   apply(plugin = "kotlin")
   apply(plugin = "kotlin-spring")
   apply(plugin = "io.spring.dependency-management")
+  apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
   dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.22")

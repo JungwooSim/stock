@@ -5,31 +5,24 @@ import com.stock.infrastructure.api.ebest.dto.EbestOrderRequest
 import com.stock.infrastructure.api.ebest.dto.EbestOrderResponse
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
 import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClientException
 import org.springframework.web.reactive.function.client.awaitBody
-import org.springframework.web.reactive.function.client.awaitBodyOrNull
-import org.springframework.web.reactive.function.client.bodyToMono
-import reactor.core.publisher.Mono
 
 @Component
 class OrderApi(
-  private val webclient: WebClient = WebClient.create("https://openapi.ebestsec.co.kr:8080")
+  private val webclient: WebClient = WebClient.create("https://openapi.ebestsec.co.kr:8080"),
 ) {
-
   /**
    * 이베스트 증권 주문
    * API Document : https://openapi.ebestsec.co.kr/apiservice?group_id=73142d9f-1983-48d2-8543-89b75535d34c&api_id=d0e216e0-10d9-479f-8a4d-e175b8bae307
    */
   @CircuitBreaker(
     name = "ebest-order",
-    fallbackMethod = "circuitBreakFallback"
+    fallbackMethod = "circuitBreakFallback",
   )
-  suspend fun ebestOrder(
-    ebestOrderRequest: EbestOrderRequest,
-  ): EbestOrderResponse? {
+  suspend fun ebestOrder(ebestOrderRequest: EbestOrderRequest): EbestOrderResponse? {
     val headers = HttpHeaders()
     headers.set("content-type", "application/json;charset=utf-8") // 고정
     headers.set("authorization", "")
@@ -52,9 +45,7 @@ class OrderApi(
     return null
   }
 
-  fun circuitBreakFallback(
-    throwable: Throwable,
-  ) {
+  fun circuitBreakFallback(throwable: Throwable) {
     logger.warn { "$throwable.message" }
   }
 }

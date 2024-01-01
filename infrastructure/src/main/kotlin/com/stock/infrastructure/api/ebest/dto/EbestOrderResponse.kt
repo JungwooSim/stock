@@ -5,13 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty
 class EbestOrderResponse(
   @JsonProperty("rsp_cd")
   val rspCd: String,
-
   @JsonProperty("rsp_msg")
   val rspMsg: String,
-
   @JsonProperty("CSPAT00601OutBlock1")
   val cSPAT00601OutBlock1: CSPAT00601OutBlock1,
-
   @JsonProperty("CSPAT00601OutBlock2")
   val cSPAT00601OutBlock2: CSPAT00601OutBlock2,
 ) {
@@ -151,4 +148,3 @@ class EbestOrderResponse(
     var ordPtnCode: String? = null
   }
 }
-

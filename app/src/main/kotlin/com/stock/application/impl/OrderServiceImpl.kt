@@ -13,14 +13,13 @@ import org.springframework.transaction.annotation.Transactional
 class OrderServiceImpl(
   private val orderPort: OrderPort,
 ) : OrderService {
-
   @Transactional
   override suspend fun order(order: Order): Order {
     orderPort.saveDb(order = order)
 
     orderPort.saveMessage(
       topicEnum = TopicEnum.ORDER,
-      payload = Json.encodeToString(order)
+      payload = Json.encodeToString(order),
     )
 
     return order
