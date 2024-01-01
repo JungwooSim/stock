@@ -11,6 +11,8 @@ Message Broker : Apache Kafka
 
 Language : Kotlin
 
+code convention : ktlint, [.editorconfig](/.editorconfig)
+
 ## 기능
 
 ### 주문
