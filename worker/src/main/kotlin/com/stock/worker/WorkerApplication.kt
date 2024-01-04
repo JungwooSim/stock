@@ -3,7 +3,9 @@ package com.stock.worker
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(
+  scanBasePackages = ["com.stock.infrastructure"],
+)
 class WorkerApplication
 
 fun main(args: Array<String>) {

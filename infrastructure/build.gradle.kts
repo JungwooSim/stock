@@ -1,6 +1,6 @@
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-webflux")
-  implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+  api("org.springframework.boot:spring-boot-starter-data-r2dbc")
   implementation("io.asyncer:r2dbc-mysql:1.0.3")
   implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
   implementation("org.springframework.kafka:spring-kafka")

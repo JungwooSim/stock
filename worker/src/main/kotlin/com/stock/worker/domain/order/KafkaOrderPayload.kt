@@ -1,4 +1,4 @@
-package com.stock.worker.application.order
+package com.stock.worker.domain.order
 
 import java.time.LocalDateTime
 
