@@ -1,6 +1,7 @@
 package com.future.stock.worker.application
 
 import com.future.stock.infra.db.StockRepository
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,7 +13,7 @@ class StockServiceImpl (
 ) : StockService {
   
   @Transactional
-  override suspend fun saveStockAtCSV(): Unit = runBlocking {
+  override suspend fun saveStockAtCSV(): Int = runBlocking {
 
     val stocks = stockPort.getStockAtCSV()
 
@@ -22,6 +23,6 @@ class StockServiceImpl (
 
     stockRepository.saveAll(
       stockEntities
-    )
+    ).toList().size
   }
 }

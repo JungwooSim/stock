@@ -2,5 +2,5 @@ package com.future.stock.worker.application
 
 interface StockService {
 
-  suspend fun saveStockAtCSV()
+  suspend fun saveStockAtCSV(): Int
 }

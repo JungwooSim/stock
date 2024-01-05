@@ -1,7 +1,7 @@
 package com.future.stock.worker.interfaces
 
 import com.future.stock.worker.application.StockService
-import org.springframework.web.bind.annotation.PostMapping
+import com.future.stock.worker.global.dto.BaseResponse
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -11,11 +11,10 @@ class StockInterface(
 ) {
 
   @PutMapping("/stock")
-  suspend fun patchStockList(): com.future.stock.worker.global.dto.BaseResponse<String> {
-    stockService.saveStockAtCSV()
+  suspend fun patchStockList(): BaseResponse<Int> {
     
-    return com.future.stock.worker.global.dto.BaseResponse(
-      data = "OK"
+    return BaseResponse(
+      data = stockService.saveStockAtCSV()
     )
   }
 }
