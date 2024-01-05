@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS stock (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name_kr_abbreviation VARCHAR(50) NOT NULL COMMENT '한글 종목명 (약어)',
   name_kr VARCHAR(100) NOT NULL COMMENT '한글 종목명',
-  name_en VARCHAR(50) NOT NULL COMMENT '영문 종목명',
+  name_en VARCHAR(100) NOT NULL COMMENT '영문 종목명',
   code VARCHAR(30) NOT NULL COMMENT '단축코드',
   standard_code VARCHAR(30) NOT NULL COMMENT '표준코드',
   market VARCHAR(15) NULL COMMENT '시장 구분(kospi, kosdaq)',
