@@ -1,6 +1,6 @@
 package com.stock.infrastructure.db
 
-import com.stock.infra.db.TransactionRepository
+import com.future.stock.infra.db.TransactionRepository
 import com.stock.infrastructure.db.fixture.TransactionEntityFixture
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat

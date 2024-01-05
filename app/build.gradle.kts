@@ -12,7 +12,7 @@ dependencies {
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("io.projectreactor:reactor-test")
 
-  implementation(project(":infrastructure"))
+  implementation(project(":infra"))
   implementation(project(":common"))
 }
 

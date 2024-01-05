@@ -13,7 +13,7 @@ class StockPortTestApplication
 
 @SpringBootTest
 class StockPortTest @Autowired constructor(
-  private val stockPort: StockPort,
+  private val stockPort: com.future.stock.worker.infrastructure.StockPort,
 ) : StockPortTestApplication() {
 
   @Test
