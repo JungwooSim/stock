@@ -1,4 +1,4 @@
-package com.stock.infrastructure.db.fixture
+package com.future.stock.infra.db.fixture
 
 import com.future.stock.common.enums.TransactionKindEnum
 import com.future.stock.common.enums.TransactionStateEnum

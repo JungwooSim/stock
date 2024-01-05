@@ -1,7 +1,6 @@
-package com.stock.infrastructure.api.ebest
+package com.future.stock.infra.api.ebest
 
-import com.future.stock.infra.api.ebest.OrderApi
-import com.stock.infrastructure.InfrastructureApplicationTest
+import com.future.stock.infra.InfrastructureApplicationTest
 import com.future.stock.infra.api.ebest.dto.EbestOrderRequest
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry
 import kotlinx.coroutines.runBlocking

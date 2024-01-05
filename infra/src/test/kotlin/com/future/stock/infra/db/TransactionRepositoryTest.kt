@@ -1,7 +1,6 @@
-package com.stock.infrastructure.db
+package com.future.stock.infra.db
 
-import com.future.stock.infra.db.TransactionRepository
-import com.stock.infrastructure.db.fixture.TransactionEntityFixture
+import com.future.stock.infra.db.fixture.TransactionEntityFixture
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -9,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest
 
 @DataR2dbcTest
-class TransactionRepositoryTest(
-  @Autowired
+class TransactionRepositoryTest @Autowired constructor(
   private val transactionRepository: TransactionRepository,
 ) {
   @Test

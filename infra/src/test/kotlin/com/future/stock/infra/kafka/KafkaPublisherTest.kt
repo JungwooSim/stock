@@ -1,8 +1,7 @@
-package com.stock.infrastructure.kafka
+package com.future.stock.infra.kafka
 
 import com.future.stock.common.enums.TopicEnum
-import com.future.stock.infra.kafka.KafkaPublisher
-import com.stock.infrastructure.InfrastructureApplicationTest
+import com.future.stock.infra.InfrastructureApplicationTest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
