@@ -1,7 +1,7 @@
-package com.stock.infrastructure
+package com.stock.app.infrastructure
 
 import com.stock.common.enums.TopicEnum
-import com.stock.domain.order.Order
+import com.stock.app.domain.order.Order
 import com.stock.infrastructure.db.TransactionEntity
 import com.stock.infrastructure.db.TransactionRepository
 import com.stock.infrastructure.kafka.KafkaPublisher

@@ -1,4 +1,4 @@
-package com.stock.interfaces.order
+package com.stock.app.interfaces.order
 
 import java.math.BigDecimal
 import java.time.LocalDateTime

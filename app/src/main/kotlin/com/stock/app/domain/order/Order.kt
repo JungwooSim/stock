@@ -1,8 +1,8 @@
-package com.stock.domain.order
+package com.stock.app.domain.order
 
 import com.stock.common.enums.TransactionKindEnum
 import com.stock.common.enums.TransactionStateEnum
-import com.stock.interfaces.order.OrderResponse
+import com.stock.app.interfaces.order.OrderResponse
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind

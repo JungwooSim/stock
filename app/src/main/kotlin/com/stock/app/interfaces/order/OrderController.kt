@@ -1,7 +1,7 @@
-package com.stock.interfaces.order
+package com.stock.app.interfaces.order
 
-import com.stock.application.OrderService
-import com.stock.domain.order.Order
+import com.stock.app.application.OrderService
+import com.stock.app.domain.order.Order
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController

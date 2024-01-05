@@ -1,9 +1,9 @@
-package com.stock.application.impl
+package com.stock.app.application.impl
 
-import com.stock.application.OrderService
+import com.stock.app.application.OrderService
 import com.stock.common.enums.TopicEnum
-import com.stock.domain.order.Order
-import com.stock.infrastructure.OrderPort
+import com.stock.app.domain.order.Order
+import com.stock.app.infrastructure.OrderPort
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.springframework.stereotype.Service
