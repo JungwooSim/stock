@@ -11,7 +11,7 @@ class StockAdapter : StockPort {
   
   // TODO : Spring Batch 로 변경하기
   override fun getStockAtCSV(): List<Stock> {
-    val resource = ClassPathResource("csv/stock-list.csv")
+    val resource = ClassPathResource("csv/stock-list.tsv")
     
     val bufferedReader = BufferedReader(FileReader(resource.file, Charsets.UTF_8))
 
@@ -19,7 +19,7 @@ class StockAdapter : StockPort {
     var i = 0
     bufferedReader.readLines().forEach {
       if (i != 0) {
-        val data = it.replace("\"", "").split(",")
+        val data = it.replace("\"", "").split("\t")
         stocks.add(
           Stock(
             nameKrAbbreviation = data[3],
@@ -28,7 +28,7 @@ class StockAdapter : StockPort {
             code = data[1],
             standardCode = data[0],
             market = data[6],
-            country = data[7],
+            country = "KR", // TODO : ENUM 변경하기
           )
         )
       }
