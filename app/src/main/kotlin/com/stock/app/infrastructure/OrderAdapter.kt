@@ -2,9 +2,9 @@ package com.stock.app.infrastructure
 
 import com.stock.common.enums.TopicEnum
 import com.stock.app.domain.order.Order
-import com.stock.infrastructure.db.TransactionEntity
-import com.stock.infrastructure.db.TransactionRepository
-import com.stock.infrastructure.kafka.KafkaPublisher
+import com.stock.infra.db.TransactionEntity
+import com.stock.infra.db.TransactionRepository
+import com.stock.infra.kafka.KafkaPublisher
 import org.springframework.stereotype.Component
 
 @Component

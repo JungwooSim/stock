@@ -1,6 +1,6 @@
 rootProject.name = "stock"
 
 include("app")
-include("infrastructure")
+include("infra")
 include("common")
 include("worker")

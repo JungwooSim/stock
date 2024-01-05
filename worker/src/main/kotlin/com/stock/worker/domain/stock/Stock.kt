@@ -1,6 +1,6 @@
 package com.stock.worker.domain.stock
 
-import com.stock.infrastructure.db.StockEntity
+import com.stock.infra.db.StockEntity
 
 class Stock(
   /**
