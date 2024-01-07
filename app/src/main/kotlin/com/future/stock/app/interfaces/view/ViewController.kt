@@ -21,7 +21,7 @@ class ViewController(
 
   @GetMapping("/view/stock")
   suspend fun stockList(model: Model): String {
-    // TOOD(중) : 페이징 추가 
+    // TODO(중) : 페이징 추가 
     val a = stockService.getStocks().map { StockResponse.of(it) }.toList()
     model.addAttribute("stocks", stockService.getStocks().map { StockResponse.of(it) })
     return "stock-list"
