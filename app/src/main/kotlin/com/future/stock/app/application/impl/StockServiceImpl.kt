@@ -2,6 +2,7 @@ package com.future.stock.app.application.impl
 
 import com.future.stock.app.application.StockService
 import com.future.stock.app.domain.stock.Stock
+import com.future.stock.app.interfaces.view.dto.PaginationRequest
 import com.future.stock.infra.db.StockRepository
 import java.time.LocalDateTime
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +21,7 @@ class StockServiceImpl(
 //    }
 //  }
 
-  override fun getStocks(): Flow<Stock> {
+  override fun getStocks(paginationRequest: PaginationRequest): Flow<Stock> {
     return (1..5).map {
       Stock(
         id = it.toLong(),
