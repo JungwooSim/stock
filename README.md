@@ -13,6 +13,8 @@ Language : Kotlin
 
 code convention : ktlint, [.editorconfig](/.editorconfig)
 
+API Design : [Google AIPs](https://google.aip.dev)
+
 ## 기능
 
 ### 주문
